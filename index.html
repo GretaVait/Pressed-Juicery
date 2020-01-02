@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Clean Juices</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <aside class="loader--wrapper">
+        <div class="logo">Clean Juices</div>
+        <div class="loader"></div>
+    </aside>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">Clean Juices</a>
+            </div>
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a href="" class="nav__link product--link">Products</a>
+                </li>
+                <li class="nav__item">
+                    <span href="" class="nav__link about--link">About</span>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div id="products--intro">
+            <div class="product--item product--red" id="red"></div>
+            <div class="product--item product--yellow" id="yellow"></div>
+            <div class="product--item product--green" id="green"></div>
+            <div class="product--item product--orange" id="orange"></div>
+            <button class="btn btn--red">View Details</button>
+        </div>
+        <div class="product--desc">
+            <div class="product--content">
+                <div class="actions--nav">
+                    <a href="" class="btn--prev go-back">
+                        <img src="images/arrow.svg" alt="" class="arrow">
+                    </a>
+                    <a href="" target="_blank" class="btn--more">
+                        <img src="images/more.svg" alt="" class="more">
+                    </a>
+                </div>
+                <div class="description--item title">
+                    <h1 class="display1"></h1>
+                    <p></p>
+                </div>
+                <div class="description--item ingredients">
+                    <h2 class="display2">Ingredients</h2>
+                    <ul class="ingredients__list"></ul>
+                    <p></p>
+                </div>
+                <div class="description--item benefits">
+                    <p>Perishable: Keep Refrigerated. Shake away separation.</p>
+                </div>
+                <div class="description--item nutrition">
+                    <h2 class="display2">Nutritional Values</h2>
+                    <ul class="nutrition__list">
+                        <li class="nutrition__item">
+                            <p class="nutrition__name">Fats</p>
+                            <p class="nutrition__value"></p>
+                        </li>
+                        <li class="nutrition__item">
+                            <p class="nutrition__name">Saturated Fats</p>
+                            <p class="nutrition__value"></p>
+                        </li>
+                        <li class="nutrition__item">
+                            <p class="nutrition__name">Trans Fats</p>
+                            <p class="nutrition__value"></p>
+                        </li>
+                        <li class="nutrition__item">
+                            <p class="nutrition__name">Carbohydrates</p>
+                            <p class="nutrition__value"></p>
+                        </li>
+                        <li class="nutrition__item">
+                            <p class="nutrition__name">Sugar</p>
+                            <p class="nutrition__value"></p>
+                        </li>
+                        <li class="nutrition__item">
+                            <p class="nutrition__name">Proteins</p>
+                            <p class="nutrition__value"></p>
+                        </li>
+                        <li class="nutrition__item">
+                            <p class="nutrition__name">Salt</p>
+                            <p class="nutrition__value"></p>
+                        </li>
+                        <li class="nutrition__item">
+                            <p class="nutrition__name">Fiber</p>
+                            <p class="nutrition__value"></p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="description--item usage">
+                    <p>Vegan, Gluten-free, Kosher, Cold Pressed, 100% Juice, Non GMO</p>
+                </div>
+            </div>
+        </div>
+        <div class="about">
+            <p>Pressed Juicery has set the standard for cold-pressed juice by abiding to a simple, guiding principle: nutrition should be delicious, affordable and accessible to everyone. Our farm-to-bottle promise provides millions of customers with healthy juice sourced from California’s Central Valley.</p>
+            <p>Pressed Juicery offers a variety of deliciously nutritious, cold-pressed fruit and vegetable juices.</p>
+            <p>Our plant-based, dairy-free soft serve, Freeze, is made with 100% real fruit, vegetables and nuts – no artificial colors, binders or preservatives.</p>
+            <p>These tiny but mighty shots deliver powerful, fresh-pressed ingredients.</p>
+            <a href="https://pressedjuicery.com/pages/about" target="_blank" class="more-info">More Info</a>
+        </div>
+        <aside>
+            <div class="side--nav">
+                <div class="nav--dot red--dot">
+                    <span class="active--dot red--active"></span>
+                </div>
+                <div class="nav--dot yellow--dot">
+                    <span class="active--dot"></span>
+                </div>
+                <div class="nav--dot green--dot">
+                    <span class="active--dot"></span>
+                </div>
+                <div class="nav--dot orange--dot">
+                    <span class="active--dot"></span>
+                </div>
+            </div>
+        </aside>
+    </main>
+    <script src="js/main.js"></script>
+    <script src="js/product.js"></script>
+    <script src="js/about.js"></script>
+    <script src="js/loader.js"></script>
+</body>
+</html>
