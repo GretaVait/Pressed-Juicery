@@ -19,10 +19,8 @@ aboutLink.addEventListener('click', () => {
     }, 100);
     mainPage = false;
     const sideNav = document.querySelector('.side--nav');
-    sideNav.style.transform = 'translate(130%, -50%)';
-    viewDetails.style.transform = 'translate(-50%, 100%)';
 
-    setTimeout(() => {
+    if (window.innerWidth <= 767) {
         about.style.transform = 'translate(0, 0)';
         for (let i = 0; i < aboutParagraph.length; i++) {
             setTimeout(()=>{
@@ -30,6 +28,30 @@ aboutLink.addEventListener('click', () => {
                 moreInfo.style.opacity = '1';
             }, 600);
         }
+    }
+
+    if (window.innerWidth >= 767) {
+        sideNav.style.transform = 'translate(130%, -50%)';
+        viewDetails.style.transform = 'translate(-50%, 100%)';
+        setTimeout(() => {
+            about.style.transform = 'translate(0, 0)';
+            for (let i = 0; i < aboutParagraph.length; i++) {
+            setTimeout(()=>{
+                aboutParagraph[i].style.opacity = '1';
+                moreInfo.style.opacity = '1';
+            }, 600);
+        }
+        }, 1000);
+    }
+
+    setTimeout(() => {
+        about.style.transform = 'translate(0, 0)';
+        for (let i = 0; i < aboutParagraph.length; i++) {
+        setTimeout(()=>{
+            aboutParagraph[i].style.opacity = '1';
+            moreInfo.style.opacity = '1';
+        }, 600);
+    }
     }, 1000);
 
     if (activeProduct === 0) {
@@ -148,8 +170,6 @@ aboutLink.addEventListener('click', () => {
 
 productLink.addEventListener('click', () => {
     mainPage = true;
-    viewDetails.style.transform = 'translate(-50%, -50%)';
-    sideNav.style.transform = 'translate(0px, -50%)';
 
     for (let i = 0; i < aboutParagraph.length; i++) {
         aboutParagraph[i].style.opacity = '0';
@@ -159,6 +179,13 @@ productLink.addEventListener('click', () => {
     setTimeout(()=>{
         about.style.transform = 'translate(-100%, 0)';
     }, 600);
+
+    if (window.innerWidth >= 767) {
+        setTimeout(() => {
+            viewDetails.style.transform = 'translate(-50%, -50%)';
+            sideNav.style.transform = 'translate(0px, -50%)';
+        }, 1200);
+    }
 
     if (activeProduct === 0) {
         productLink.setAttribute('href', '#red');

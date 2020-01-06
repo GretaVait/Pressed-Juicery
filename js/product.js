@@ -63,15 +63,24 @@ viewDetails.addEventListener('click', () => {
     }, 100);
     mainPage = false;
     const sideNav = document.querySelector('.side--nav');
-    sideNav.style.transform = 'translate(130%, -50%)';
-    viewDetails.style.transform = 'translate(-50%, 100%)';
 
-    setTimeout(() => {
+    if (window.innerWidth <= 767) {
         productDesc.style.transform = 'translate(0, 0)';
         setTimeout(()=>{
             productContent.style.opacity = '1';
         }, 600);
-    }, 1000);
+    }
+
+    if (window.innerWidth >= 767) {
+        sideNav.style.transform = 'translate(130%, -50%)';
+        viewDetails.style.transform = 'translate(-50%, 100%)';
+        setTimeout(() => {
+            productDesc.style.transform = 'translate(0, 0)';
+            setTimeout(()=>{
+                productContent.style.opacity = '1';
+            }, 600);
+        }, 1000);
+    }
 
     if (activeProduct === 0) {
         moreBtn.setAttribute('href', 'https://pressedjuicery.com/products/beet-carrot-juice');
@@ -256,10 +265,12 @@ const goBack = document.querySelector('.go-back');
 goBack.addEventListener('click', () => {
     mainPage = true;
 
-    setTimeout(() => {
-        viewDetails.style.transform = 'translate(-50%, -50%)';
-        sideNav.style.transform = 'translate(0px, -50%)';
-    }, 1200);
+    if (window.innerWidth >= 767) {
+        setTimeout(() => {
+            viewDetails.style.transform = 'translate(-50%, -50%)';
+            sideNav.style.transform = 'translate(0px, -50%)';
+        }, 1200);
+    }
 
     productContent.style.opacity = '0';
     setTimeout(() => {

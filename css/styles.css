@@ -98,6 +98,18 @@ a {
     border: 2px solid;
 }
 
+.btn--prev,
+.btn--more {
+    display: flex;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+}
+
+.btn--more {
+    justify-content: flex-end;
+}
+
 /* Typography */
 .display1 {
     font-family: 'Roboto Mono', monospace;
@@ -440,7 +452,7 @@ nav {
     top: 0;
     left: 0;
     z-index: 1;
-    padding: 100px 30px 30px 30px;
+    padding: 100px 30px 50px 30px;
     overflow-y: scroll;
     transform: translate(-100%, 0);
     transition: all 0.5s ease-in-out;
