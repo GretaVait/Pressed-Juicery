@@ -5,9 +5,9 @@ Complete product website for juice company. Modern and clean design which is res
 ## Technologies
 
 For this project I used:
-*HTML5
-*CSS3
-*JavaScript
+- HTML5
+- CSS3
+- JavaScript
 
 ## Note
 
