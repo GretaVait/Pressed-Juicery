@@ -1,6 +1,22 @@
-const descriptionItem = main.querySelectorAll('.description--item');
+// ---------------------------------------------------------------------------------
+// ------------------------------- VARIABLES ---------------------------------------
+// ---------------------------------------------------------------------------------
 
-const viewDetails = document.querySelector('#products--intro .btn');
+const viewDetails = document.querySelector('#products--intro .btn'); //btn to show product
+const productDesc = document.querySelector('.product--desc'); //product display
+const productContent = productDesc.querySelector('.product--content'); //product content (inside product desc)
+const title = document.querySelector('.title h1'); //product title
+const desc = document.querySelector('.title p'); //product description
+const usage = document.querySelector('.usage p'); //product usage
+const ingredients = document.querySelector('.ingredients'); //product ingredients container
+const nutritionalValue = document.querySelectorAll('.nutrition__value');
+const moreBtn = document.querySelector('.btn--more'); //btn directs to website to that product
+
+const ingredientsList = document.querySelector('.ingredients__list');
+
+// ---------------------------------------------------------------------------------
+// ---------------------------- PRODUCT DATA ---------------------------------------
+// ---------------------------------------------------------------------------------
 
 class Product {
     constructor(title, description, ingredients, nutrition) {
@@ -39,20 +55,90 @@ const orangeJuice = new Product(
     ['0G', '0G', '0G', '19G', '15G', '1G', '0.05G', '1G']
 );
 
-const productDesc = document.querySelector('.product--desc');
-const productContent = productDesc.querySelector('.product--content');
-const title = document.querySelector('.title h1');
-const desc = document.querySelector('.title p');
-const usage = document.querySelector('.usage p');
-const ingredients = document.querySelector('.ingredients p');
+// ---------------------------------------------------------------------------------
+// --------------------------------- FUNCTIONS -------------------------------------
+// ---------------------------------------------------------------------------------
 
-const headlines = document.querySelectorAll('.description--item .display1');
 
-const ingredientsList = document.querySelector('.ingredients__list');
+function openProduct(url, JuiceKind, productHide1, productHide2, productHide3, product) {
+    moreBtn.setAttribute('href', url);
 
-const nutritionalValue = document.querySelectorAll('.nutrition__value');
+    title.innerHTML = JuiceKind.title;
+    desc.innerHTML = JuiceKind.description;
 
-const moreBtn = document.querySelector('.btn--more');
+    for (let i = 0; i < JuiceKind.ingredients.length; i++) {
+        const ingredientsItem = document.createElement('LI');
+        ingredientsList.appendChild(ingredientsItem);
+        ingredientsItem.classList.add('ingredients__item');
+        ingredientsItem.innerHTML = JuiceKind.ingredients[i];
+    }
+
+    for (let i = 0; i < JuiceKind.nutrition.length; i++) {
+        nutritionalValue[i].innerHTML = JuiceKind.nutrition[i];
+    }
+
+    productHide1.style.display = 'none'; 
+    productHide2.style.display = 'none';
+    productHide3.style.display = 'none';
+    product.style.backgroundAttachment = 'scroll';
+
+    if (window.innerWidth >= 768) {
+        product.style.backgroundSize = '500px 500px, 379px 0px';
+        setTimeout(() => {
+            product.style.transform  = 'translate(-30%, 0px)';
+        }, 500);
+    }
+
+    if (window.innerWidth >= 1050) {
+        product.style.backgroundSize = '550px 550px, 400px 0px';
+        setTimeout(() => {
+            product.style.transform  = 'translate(-25%, 0px)';
+        }, 500);
+    }
+
+    if (window.innerWidth >= 1530) {
+        product.style.backgroundSize = '650px 650px, 500px 0px';
+        setTimeout(() => {
+            product.style.transform  = 'translate(-25%, 0px)';
+        }, 500);
+    }
+}
+
+function closeProduct(href, productShow1, productShow2, productShow3, product, JuiceKind) {
+    goBack.setAttribute('href', href);
+    productShow1.style.display = 'block';
+    productShow2.style.display = 'block';
+    productShow3.style.display = 'block';
+    product.style.backgroundAttachment = 'fixed';
+
+    setTimeout(() => {
+        if (window.innerWidth >= 768) {
+            product.style.transform  = 'translate(0px, 0px)';
+            setTimeout(() => {
+                product.style.backgroundSize = '500px 500px, 379px 379px';
+            }, 500);
+        }
+
+        if (window.innerWidth >= 1050) {
+            setTimeout(() => {
+                product.style.backgroundSize = '550px 550px, 400px 400px';
+            }, 500);
+        }
+
+        if (window.innerWidth >= 1530) {
+            setTimeout(() => {
+                product.style.backgroundSize = '650px 650px, 500px 500px';
+            }, 500);
+        }
+        for (let i = 0; i < JuiceKind.ingredients.length; i++) {
+            ingredientsList.removeChild(ingredientsList.childNodes[0]);
+        }
+    }, 1000);
+}
+
+// ---------------------------------------------------------------------------------
+// ----------------------------- FUNCTIONS END HERE --------------------------------
+// ---------------------------------------------------------------------------------
 
 viewDetails.addEventListener('click', () => {
     setTimeout(() => {
@@ -83,180 +169,19 @@ viewDetails.addEventListener('click', () => {
     }
 
     if (activeProduct === 0) {
-        moreBtn.setAttribute('href', 'https://pressedjuicery.com/products/beet-carrot-juice');
-
-        title.innerHTML = redJuice.title;
-        desc.innerHTML = redJuice.description;
-
-        for (let i = 0; i < redJuice.ingredients.length; i++) {
-            const ingredientsItem = document.createElement('LI');
-            ingredientsList.appendChild(ingredientsItem);
-            ingredientsItem.classList.add('ingredients__item');
-            ingredientsItem.innerHTML = redJuice.ingredients[i];
-        }
-
-        for (let i = 0; i < redJuice.nutrition.length; i++) {
-            nutritionalValue[i].innerHTML = redJuice.nutrition[i];
-        }
-
-        productYellow.style.display = 'none';
-        productGreen.style.display = 'none';
-        productOrange.style.display = 'none';
-        productRed.style.backgroundAttachment = 'scroll';
-
-        if (window.innerWidth >= 768) {
-            productRed.style.backgroundSize = '500px 500px, 379px 0px';
-            setTimeout(() => {
-                productRed.style.transform  = 'translate(-30%, 0px)';
-            }, 500);
-        }
-
-        if (window.innerWidth >= 1050) {
-            productRed.style.backgroundSize = '550px 550px, 400px 0px';
-            setTimeout(() => {
-                productRed.style.transform  = 'translate(-25%, 0px)';
-            }, 500);
-        }
-
-        if (window.innerWidth >= 1530) {
-            productRed.style.backgroundSize = '650px 650px, 500px 0px';
-            setTimeout(() => {
-                productRed.style.transform  = 'translate(-25%, 0px)';
-            }, 500);
-        }
+        openProduct('https://pressedjuicery.com/products/beet-carrot-juice', redJuice, productYellow, productGreen, productOrange, productRed);
     }
 
     if (activeProduct === 1) {
-        moreBtn.setAttribute('href', 'https://pressedjuicery.com/products/apple-pineapple-lemon-juice');
-
-        title.innerHTML = yellowJuice.title;
-        desc.innerHTML = yellowJuice.description;
-        
-        for (let i = 0; i < yellowJuice.ingredients.length; i++) {
-            const ingredientsItem = document.createElement('LI');
-            ingredientsList.appendChild(ingredientsItem);
-            ingredientsItem.classList.add('ingredients__item');
-            ingredientsItem.innerHTML = yellowJuice.ingredients[i];
-        }
-
-        for (let i = 0; i < yellowJuice.nutrition.length; i++) {
-            nutritionalValue[i].innerHTML = yellowJuice.nutrition[i];
-        }
-
-        productRed.style.display = 'none';
-        productGreen.style.display = 'none';
-        productOrange.style.display = 'none';
-        productYellow.style.backgroundAttachment = 'scroll';
-
-        if (window.innerWidth >= 768) {
-            setTimeout(() => {
-                productYellow.style.transform  = 'translate(-30%, 0px)';
-            }, 500);
-            productYellow.style.backgroundSize = '500px 500px, 379px 0px';
-        }
-
-        if (window.innerWidth >= 1050) {
-            setTimeout(() => {
-                productYellow.style.transform  = 'translate(-25%, 0px)';
-            }, 500);
-            productYellow.style.backgroundSize = '550px 550px, 0px 400px';
-        }
-
-        if (window.innerWidth >= 1530) {
-            setTimeout(() => {
-                productYellow.style.transform  = 'translate(-25%, 0px)';
-            }, 500);
-            productYellow.style.backgroundSize = '650px 650px, 500px 0px';
-        }
-        
+        openProduct('https://pressedjuicery.com/products/apple-pineapple-lemon-juice', yellowJuice, productRed, productGreen, productOrange, productYellow);
     }
 
     if (activeProduct === 2) {
-        moreBtn.setAttribute('href', 'https://pressedjuicery.com/products/kale-spinach-juice');
-
-        title.innerHTML = greenJuice.title;
-        desc.innerHTML = greenJuice.description;
-        
-        for (let i = 0; i < greenJuice.ingredients.length; i++) {
-            const ingredientsItem = document.createElement('LI');
-            ingredientsList.appendChild(ingredientsItem);
-            ingredientsItem.classList.add('ingredients__item');
-            ingredientsItem.innerHTML = greenJuice.ingredients[i];
-        }
-
-        for (let i = 0; i < greenJuice.nutrition.length; i++) {
-            nutritionalValue[i].innerHTML = greenJuice.nutrition[i];
-        }
-
-        productRed.style.display = 'none';
-        productYellow.style.display = 'none';
-        productOrange.style.display = 'none';
-        productGreen.style.backgroundAttachment = 'scroll';
-
-        if (window.innerWidth >= 768) {
-            setTimeout(() => {
-                productGreen.style.transform  = 'translate(-30%, 0px)';
-            }, 500);
-            productGreen.style.backgroundSize = '500px 500px, 379px 0px';
-        }
-
-        if (window.innerWidth >= 1050) {
-            setTimeout(() => {
-                productGreen.style.transform  = 'translate(-25%, 0px)';
-            }, 500);
-            productGreen.style.backgroundSize = '550px 550px, 400px 0px';
-        }
-
-        if (window.innerWidth >= 1530) {
-            setTimeout(() => {
-                productGreen.style.transform  = 'translate(-25%, 0px)';
-            }, 500);
-            productGreen.style.backgroundSize = '650px 650px, 500px 0px';
-        }
+        openProduct('https://pressedjuicery.com/products/kale-spinach-juice', greenJuice, productRed, productYellow, productOrange, productGreen);
     }
 
     if (activeProduct === 3) {
-        moreBtn.setAttribute('href', 'https://pressedjuicery.com/products/orange-turmeric-apple-lemon-juice');
-
-        title.innerHTML = orangeJuice.title;
-        desc.innerHTML = orangeJuice.description;
-        
-        for (let i = 0; i < orangeJuice.ingredients.length; i++) {
-            const ingredientsItem = document.createElement('LI');
-            ingredientsList.appendChild(ingredientsItem);
-            ingredientsItem.classList.add('ingredients__item');
-            ingredientsItem.innerHTML = orangeJuice.ingredients[i];
-        }
-
-        for (let i = 0; i < orangeJuice.nutrition.length; i++) {
-            nutritionalValue[i].innerHTML = orangeJuice.nutrition[i];
-        }
-
-        productRed.style.display = 'none';
-        productYellow.style.display = 'none';
-        productGreen.style.display = 'none';
-        productOrange.style.backgroundAttachment = 'scroll';
-
-        if (window.innerWidth >= 768) {
-            setTimeout(() => {
-                productOrange.style.transform  = 'translate(-30%, 0px)';
-            }, 500);
-            productOrange.style.backgroundSize = '500px 500px, 379px 0px';
-        }
-
-        if (window.innerWidth >= 1050) {
-            setTimeout(() => {
-                productOrange.style.transform  = 'translate(-25%, 0px)';
-            }, 500);
-            productOrange.style.backgroundSize = '550px 550px, 400px 0px';
-        }
-
-        if (window.innerWidth >= 1530) {
-            setTimeout(() => {
-                productOrange.style.transform  = 'translate(-25%, 0px)';
-            }, 500);
-            productOrange.style.backgroundSize = '650px 650px, 500px 0px';
-        }
+        openProduct('https://pressedjuicery.com/products/orange-turmeric-apple-lemon-juice', orangeJuice, productRed, productYellow, productGreen, productOrange);
     }
 });
 
@@ -278,120 +203,21 @@ goBack.addEventListener('click', () => {
     }, 600);
 
     if (activeProduct === 0) {
-        goBack.setAttribute('href', '#red');
-        productYellow.style.display = 'block';
-        productGreen.style.display = 'block';
-        productOrange.style.display = 'block';
-        productRed.style.backgroundAttachment = 'fixed';
-
-        setTimeout(() => {
-            if (window.innerWidth >= 768) {
-                productRed.style.transform  = 'translate(0px, 0px)';
-                setTimeout(() => {
-                    productRed.style.backgroundSize = '500px 500px, 379px 379px';
-                }, 500);
-            }
-
-            if (window.innerWidth >= 1050) {
-                setTimeout(() => {
-                    productRed.style.backgroundSize = '550px 550px, 400px 400px';
-                }, 500);
-            }
-
-            if (window.innerWidth >= 1530) {
-                setTimeout(() => {
-                    productRed.style.backgroundSize = '650px 650px, 500px 500px';
-                }, 500);
-            }
-        }, 1000);
+        closeProduct('#red', productYellow, productGreen, productOrange, productRed, redJuice);
     }
 
     if (activeProduct === 1) {
-        goBack.setAttribute('href', '#yellow');
-        productRed.style.display = 'block';
-        productGreen.style.display = 'block';
-        productOrange.style.display = 'block';
-        productYellow.style.backgroundAttachment = 'fixed';
-
-        setTimeout(() => {
-            if (window.innerWidth >= 768) {
-                productYellow.style.transform  = 'translate(0px, 0px)';
-                setTimeout(() => {
-                    productYellow.style.backgroundSize = '500px 500px, 379px 379px';
-                }, 500);
-            }
-
-            if (window.innerWidth >= 1050) {
-                setTimeout(() => {
-                    productYellow.style.backgroundSize = '550px 550px, 400px 400px';
-                }, 500);
-            }
-
-            if (window.innerWidth >= 1530) {
-                setTimeout(() => {
-                    productYellow.style.backgroundSize = '650px 650px, 500px 500px';
-                }, 500);
-            }
-        }, 1000);
+        closeProduct('#yellow', productRed, productGreen, productOrange, productYellow, yellowJuice);
     }
 
     if (activeProduct === 2) {
-        goBack.setAttribute('href', '#green');
-        productRed.style.display = 'block';
-        productYellow.style.display = 'block';
-        productOrange.style.display = 'block';
-        productGreen.style.backgroundAttachment = 'fixed';
-
-        setTimeout(() => {
-            if (window.innerWidth >= 768) {
-                productGreen.style.transform  = 'translate(0px, 0px)';
-                setTimeout(() => {
-                    productGreen.style.backgroundSize = '500px 500px, 379px 379px';
-                }, 500);
-            }
-
-            if (window.innerWidth >= 1050) {
-                setTimeout(() => {
-                    productGreen.style.backgroundSize = '550px 550px, 400px 400px';
-                }, 500);
-            }
-
-            if (window.innerWidth >= 1530) {
-                setTimeout(() => {
-                    productGreen.style.backgroundSize = '650px 650px, 500px 500px';
-                }, 500);
-            }
-        }, 1000);
+        closeProduct('#green', productRed, productYellow, productOrange, productGreen, greenJuice);
     }
 
     if (activeProduct === 3) {
-        goBack.setAttribute('href', '#orange');
-        productRed.style.display = 'block';
-        productYellow.style.display = 'block';
-        productGreen.style.display = 'block';
-        productOrange.style.backgroundAttachment = 'fixed';
-
-        setTimeout(() => {
-            if (window.innerWidth >= 768) {
-                productOrange.style.transform  = 'translate(0px, 0px)';
-                setTimeout(() => {
-                    productOrange.style.backgroundSize = '500px 500px, 379px 379px';
-                }, 500);
-            }
-
-            if (window.innerWidth >= 1050) {
-                setTimeout(() => {
-                    productOrange.style.backgroundSize = '550px 550px, 400px 400px';
-                }, 500);
-            }
-
-            if (window.innerWidth >= 1530) {
-                setTimeout(() => {
-                    productOrange.style.backgroundSize = '650px 650px, 500px 500px';
-                }, 500);
-            }
-        }, 1000);
+        closeProduct('#orange', productRed, productYellow, productGreen, productOrange, orangeJuice);
     }
+
     setTimeout(() => {
         var allElements = document.getElementsByTagName("*");
         for (var i = 0; i < allElements.length; i++) {
